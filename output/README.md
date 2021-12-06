@@ -1,6 +1,6 @@
-# 1
+# this is a sample title
 
-  2
+  this is a sample description
 
   ## Table of Contents
 
@@ -13,27 +13,27 @@
 
   ## Installation
 
-  3
+  this is a sample instructions
 
   ## Usage
 
-  4
+  this is a sample usage
 
   ## License
 
-  [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
   ## Contributing
 
-  
+  none
 
   ## Tests
 
-  
+  this one right now
 
   ## Questions
 
-  - Check out my other repositories at [GitHub Profile](https://github.com/)
+  - Check out my other repositories at [GitHub Profile](https://github.com/c-phillips7)
 
-  - For any questions, contact me at .
+  - For any questions, contact me at cp.phillips15@gmail.com.
 
