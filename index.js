@@ -92,7 +92,7 @@ async function init() {
                 username: answers.username,
                 email: answers.email,
             }
-            console.log(data);
+            // console.log(data);
 
             return data
         })
@@ -100,7 +100,7 @@ async function init() {
             // Logic to display license badges instead of just name
             
             // Checking if data variable is readable
-            // console.log(data);
+            console.log(data);
             // console.log(data.license);
 
             if (data.license === "Apache") {
