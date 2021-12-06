@@ -3,6 +3,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const markdown = require('./utils/generateMarkdown')
+const util = require("util");
+const writeFileAsync = util.promisify(fs.writeFile);
 
 
 
@@ -107,7 +109,7 @@ async function init() {
 
             // call to writeToFile()
             const finalReadMe = markdown(data)
-            writeToFile(".output/README.md", finalReadMe); 
+            writeToFile("output/README.md", finalReadMe); 
         })
         .catch(err => {
             console.log("Error: ", err);
