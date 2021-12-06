@@ -7,8 +7,6 @@ const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 
 
-
-
 // TODO: Create an array of questions for user input
 // username, description, installation, usage, license, credits
 const questions = [
@@ -34,9 +32,10 @@ const questions = [
         name: "usage",
     },
     {
-        type: "input",
-        message: "Enter licenses used for your project: ",
+        type: "list",
+        message: "Choose a license for your project: ",
         name: "license",
+        choices: ["Apache", "GNU", "MIT"]
     },
     {
         type: "input",
@@ -77,20 +76,9 @@ async function init() {
         .prompt(questions)
         .then(answers => {
             // console.log(answers);
-            /*how answers are logged:
-            {
-                title: 'read me generator',
-                description: 'a read me generator',
-                installation: 'none',
-                usage: 'to generate a professional readme',
-                license: 'none',
-                contributing: 'none',
-                tests: 'none',
-                username: 'c-phillips7',
-                email: 'cp.phillips15@gmail.com'
-              }
-              */
+        
 
+            
             // Set answers to data for writeToFile
             const data = 
             {
@@ -104,8 +92,28 @@ async function init() {
                 username: answers.username,
                 email: answers.email,
             }
-            // console.log(data);
+            console.log(data);
 
+            return data
+        })
+        .then(data => {
+            // Logic to display license badges instead of just name
+            
+            // Checking if data variable is readable
+            // console.log(data);
+            // console.log(data.license);
+
+            if (data.license === "Apache") {
+                data.license = "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
+        
+            }
+            else if (data.license === "GPL") {
+                data.license = "[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)"
+            }
+            else if (data.license === "MIT") {
+                data.license = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
+            }
+           else {console.log("If statement failed, no license matched");}
 
             // call to writeToFile()
             const finalReadMe = markdown(data)
