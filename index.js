@@ -74,16 +74,45 @@ async function init() {
     await inquirer
         .prompt(questions)
         .then(answers => {
-            console.log(answers);
+            // console.log(answers);
+            /*how answers are logged:
+            {
+                title: 'read me generator',
+                description: 'a read me generator',
+                installation: 'none',
+                usage: 'to generate a professional readme',
+                license: 'none',
+                contributing: 'none',
+                tests: 'none',
+                username: 'c-phillips7',
+                email: 'cp.phillips15@gmail.com'
+              }
+              */
 
             // Set answers to data for writeToFile
+            const data = 
+            {
+                title: answers.title,
+                description: answers.description,
+                installation: answers.installation,
+                usage: answers.usage,
+                license: answers.license,
+                contributing: answers.contributing,
+                tests: answers.tests,
+                username: answers.username,
+                email: answers.email,
+            }
+            // console.log(data);
+
 
             // call to writeToFile()
+            const finalReadMe = markdown(data)
+            writeToFile(".output/README.md", finalReadMe); 
         })
-    
-
-
-}
+        .catch(err => {
+            console.log("Error: ", err);
+        });
+};
 
 // Function call to initialize app
 init();
