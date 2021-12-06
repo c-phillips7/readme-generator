@@ -2,7 +2,7 @@
 // add and require inquirer and fs
 const inquirer = require('inquirer');
 const fs = require('fs');
-const license = require('./utils/generateMarkdown')
+const markdown = require('./utils/generateMarkdown')
 
 
 
@@ -48,7 +48,15 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+async function writeToFile(fileName, data) {
+    writeFileAsync(fileName, data)
+    .then(function() {
+        console.log("ReadMe generated");
+    }).catch(err => {
+        console.log("Error: ", err);
+    });
+};
+
 
 // TODO: Create a function to initialize app
 async function init() {
@@ -56,6 +64,10 @@ async function init() {
         .prompt(questions)
         .then(answers => {
             console.log(answers);
+
+            // Set answers to data for writeToFile
+
+            // call to writeToFile()
         })
     
 
